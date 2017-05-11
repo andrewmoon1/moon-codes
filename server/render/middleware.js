@@ -19,8 +19,13 @@ export default function render(req, res) {
       isWaiting: false,
       message: '',
       isLogin: true
-    }
+    },
+    docAreas: [
+      'textArea',
+      'codeMirror',
+    ]
   }, history);
+
   const routes = createRoutes(store);
 
   /*

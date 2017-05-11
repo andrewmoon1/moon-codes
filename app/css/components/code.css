@@ -1,0 +1,48 @@
+@import '../common/colors';
+
+.code-input {
+  display: flex;
+  align-self: center;
+  flex-direction: column;
+  /*width: 80%;*/
+  min-height: 400px;
+}
+
+.cm-s-default {
+  min-height: 200px;
+  width: 100%;
+  margin-top: 20px;
+  border: 1px solid var(--blue-0);
+  &:hover, &:active, &:focus {
+    border: 2px solid var(--blue-2);
+    outline: none;
+  }
+}
+
+.code-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+
+  button, input {
+    height: 27px;
+    font-size: 14px;
+    color: white;
+    background-color: var(--blue-4);
+    border: 1px solid var(--blue-4);
+    border-radius: 10px;
+    &:hover, &:active, &:focus {
+      background-color: var(--blue-0);
+      outline: none;
+    }
+  }
+}
+
+.CodeMirror-linenumbers {
+  background-color: var(--green-0);
+  opacity: 0.3;
+}
+
+.CodeMirror-linenumber {
+  color: white;
+}

@@ -51,6 +51,13 @@ export function typing(text) {
   };
 }
 
+export function typingText(text) {
+  return {
+    type: types.TYPINGTEXT,
+    newTopic: text
+  };
+}
+
 // This action creator returns a function,
 // which will get executed by Redux-Thunk middleware
 // This function does not need to be pure, and thus allowed
