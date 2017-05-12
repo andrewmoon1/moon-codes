@@ -45,15 +45,9 @@ function createTopicDuplicate() {
 }
 
 export function typing(text) {
+  console.log('the action', text)
   return {
     type: types.TYPING,
-    newTopic: text
-  };
-}
-
-export function typingText(text) {
-  return {
-    type: types.TYPINGTEXT,
     newTopic: text
   };
 }

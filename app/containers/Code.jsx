@@ -4,10 +4,8 @@ import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
 import TextArea from '../components/TextArea';
 import CodeBttns from '../components/CodeBttns';
-import { createTopic, typing, typingText, incrementCount,
-  decrementCount, destroyTopic } from '../actions/topics';
+import { typingText, newArea, submitCode } from '../actions/codes';
 import styles from '../css/components/code';
-import '../css/components/code';
 
 const cx = classNames.bind(styles);
 
@@ -19,15 +17,16 @@ class Code extends React.Component {
     super(props);
     this.cmOptions = {
       lineNumbers: true,
+      mode: 'javascript',
     };
   }
 
   render() {
-    const {typingText, docAreas } = this.props;
+    const {typingText, newArea } = this.props;
+    console.log(this.props)
     const areas = [];
     let count = 0;
     this.props.docAreas.map((area) => {
-      count += 1;
       if (area === 'textArea') {
         areas.push(
           <TextArea
@@ -36,24 +35,24 @@ class Code extends React.Component {
         );
       } else if (area === 'codeMirror') {
         areas.push(
-          <div className={cx('mirror-container')}>
+          <div key={count} className={cx('mirror-container')}>
             <CodeMirror
-              key={count}
               options={this.cmOptions}
               defaultValue={'Enter Your Code'}
+              onChange={typingText}
             />
           </div>
         );
       }
+      count += 1;
       return undefined;
     });
     return (
       <form className={cx('code-input')} onSubmit={this.props.submit}>
         {areas}
         <CodeBttns
-          addCode={this.props.addCode}
-          submit={this.props.submit}
-          addText={this.props.addText}
+          newArea={newArea}
+          submit={submitCode}
           />
       </form>
     );
@@ -80,4 +79,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { typingText })(Code);
+export default connect(mapStateToProps, { typingText, newArea })(Code);

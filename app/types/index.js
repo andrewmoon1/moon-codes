@@ -17,6 +17,7 @@ export const DECREMENT_COUNT = 'DECREMENT_COUNT';
 export const DESTROY_TOPIC = 'DESTROY_TOPIC';
 export const TYPING = 'TYPING';
 export const TYPINGTEXT = 'TYPINGTEXT';
+export const NEWAREA = 'NEWAREA';
 
 export const TOGGLE_LOGIN_MODE = 'TOGGLE_LOGIN_MODE';
 export const MANUAL_LOGIN_USER = 'MANUAL_LOGIN_USER';

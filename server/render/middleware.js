@@ -20,10 +20,12 @@ export default function render(req, res) {
       message: '',
       isLogin: true
     },
-    docAreas: [
-      'textArea',
-      'codeMirror',
-    ]
+    newArea: {
+      areas: [
+        'textArea',
+        'codeMirror',
+      ]
+    }
   }, history);
 
   const routes = createRoutes(store);
