@@ -20,7 +20,6 @@ export function all(req, res) {
  */
 export function add(req, res) {
   Topic.create(req.body, (err) => {
-    console.log(req.body, '----------------------')
     if (err) {
       console.log(err);
       return res.status(400).send(err);

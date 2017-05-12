@@ -5,6 +5,7 @@ import { RouterContext } from 'react-router';
 import Helmet from 'react-helmet';
 import staticAssets from './static-assets';
 
+
 const createApp = (store, props) => renderToString(
   <Provider store={store}>
     <RouterContext {...props} />
@@ -21,6 +22,7 @@ const buildPage = ({ componentHTML, initialState, headAssets }) => {
     ${headAssets.link.toString()}
     ${staticAssets.createStylesheets()}
     ${staticAssets.createTrackingScript()}
+    <link href="api/mirror" rel="stylesheet">
   </head>
   <body>
     <div id="app">${componentHTML}</div>

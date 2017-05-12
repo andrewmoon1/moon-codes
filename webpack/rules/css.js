@@ -66,4 +66,3 @@ module.exports = ({ production = false, browser = false } = {}) => {
     include: PATHS.app
   };
 };
-

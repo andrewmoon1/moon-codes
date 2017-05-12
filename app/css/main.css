@@ -1,8 +1,11 @@
 @import 'settings';
 @import 'common/layout';
 @import 'common/typography';
+@import './common/colors';
 
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+@import '../../node_modules/codemirror/lib/codemirror.css';
 
 
 * { box-sizing: border-box; }
@@ -22,11 +25,10 @@ body {
 
 /* Add your global styles below... */
 
-/* ex:
+/* ex: */
 
-:global {
+/*:global {
   & .red { color: red; }
   & .blue { color: blue; }
-}
 
-*/
+}*/

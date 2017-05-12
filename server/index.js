@@ -1,5 +1,6 @@
 import express from 'express';
 import webpack from 'webpack';
+import fs from 'fs';
 import { isDebug } from '../config/app';
 import { connect } from './db';
 import initPassport from './init/passport';
@@ -43,6 +44,17 @@ initExpress(app);
  * Note: Some of these routes have passport and database model dependencies
  */
 initRoutes(app);
+
+app.get('/api/mirror', (req, res, next) => {
+  fs.readFile('./node_modules/codemirror/lib/codemirror.css', (err, data) => {
+    if (err) {
+      res.writeHead(500);
+      console.log('err');
+    }
+    res.writeHead(200, {'Content-Type': 'text/css'});
+    res.end(data);
+  });
+});
 
 /*
  * This is where the magic happens. We take the locals data we have already

@@ -3,15 +3,15 @@
 .textarea {
   min-height: 200px;
   width: 100%;
-  text-align-last: center;
+  /*text-align-last: center;*/
   white-space: normal;
   text-align: justify;
   border: 1px solid var(--blue-0);
-  padding: 5px 0 5px 0;
-  &:hover, &:active, &:focus {
-    border: 2px solid $blue-2;
-    outline: none;
-  }
+  padding: 5px;
+}
+.textarea:hover, .textarea:active, .textarea:focus {
+  border: 2px solid var(--blue-2);
+  outline: none;
 }
 
 .text-area-container {

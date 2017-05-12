@@ -1,11 +1,23 @@
 @import '../common/colors';
 
+@import '../../../node_modules/codemirror/lib/codemirror.css';
+
+
 .code-input {
   display: flex;
   align-self: center;
   flex-direction: column;
   /*width: 80%;*/
   min-height: 400px;
+}
+
+.mirror-container {
+  margin-top: 20px;
+  border: 1px solid var(--blue-0);
+}
+.mirror-container:hover, .mirror-container:active, .mirror-container:focus {
+  border: 2px solid var(--blue-2);
+  outline: none;
 }
 
 .cm-s-default {
@@ -23,26 +35,17 @@
   display: flex;
   justify-content: space-around;
   margin: 20px 0;
-
-  button, input {
-    height: 27px;
-    font-size: 14px;
-    color: white;
-    background-color: var(--blue-4);
-    border: 1px solid var(--blue-4);
-    border-radius: 10px;
-    &:hover, &:active, &:focus {
-      background-color: var(--blue-0);
-      outline: none;
-    }
-  }
 }
 
-.CodeMirror-linenumbers {
-  background-color: var(--green-0);
-  opacity: 0.3;
-}
-
-.CodeMirror-linenumber {
+.code-button {
+  height: 27px;
+  font-size: 14px;
   color: white;
+  background-color: var(--blue-4);
+  border: 1px solid var(--blue-4);
+  border-radius: 10px;
+  &:hover, &:active, &:focus {
+    background-color: var(--blue-0);
+    outline: none;
+  }
 }

@@ -6,7 +6,7 @@ import EntryBox from '../components/EntryBox';
 import TextArea from '../components/TextArea';
 import MainSection from '../components/MainSection';
 import Scoreboard from '../components/Scoreboard';
-import { createTopic, typing, typingText, incrementCount,
+import { createTopic, typing, incrementCount,
   decrementCount, destroyTopic } from '../actions/topics';
 import styles from '../css/components/vote';
 
@@ -14,15 +14,13 @@ const cx = classNames.bind(styles);
 
 class Vote extends Component {
   render() {
-    const {newTopic, topics, typing, typingText, createTopic, destroyTopic, incrementCount, decrementCount } = this.props;
+    const {newTopic, topics, typing, createTopic, destroyTopic, incrementCount, decrementCount } = this.props;
     return (
       <div className={cx('vote')}>
         <EntryBox
           topic={newTopic}
           onEntryChange={typing}
           onEntrySave={createTopic} />
-        <TextArea
-          onEntryChange={typingText} />
         <MainSection
           topics={topics}
           onIncrement={incrementCount}
@@ -37,7 +35,6 @@ class Vote extends Component {
 Vote.propTypes = {
   topics: PropTypes.array.isRequired,
   typing: PropTypes.func.isRequired,
-  typingText: PropTypes.func.isRequired,
   createTopic: PropTypes.func.isRequired,
   destroyTopic: PropTypes.func.isRequired,
   incrementCount: PropTypes.func.isRequired,
@@ -54,4 +51,4 @@ function mapStateToProps(state) {
 
 // Read more about where to place `connect` here:
 // https://github.com/rackt/react-redux/issues/75#issuecomment-135436563
-export default connect(mapStateToProps, { createTopic, typing, typingText, incrementCount, decrementCount, destroyTopic })(Vote);
+export default connect(mapStateToProps, { createTopic, typing, incrementCount, decrementCount, destroyTopic })(Vote);
