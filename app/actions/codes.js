@@ -10,7 +10,6 @@ export function typingText(text) {
 }
 
 export function newArea(text) {
-  console.log('--action-->', text, types.NEWAREA)
   return {
     type: types.NEWAREA,
     newSection: text

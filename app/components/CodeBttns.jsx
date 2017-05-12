@@ -14,7 +14,6 @@ class CodeBttns extends React.Component {
   }
 
   submit(event) {
-    console.log('what')
     event.preventDefault();
   }
 

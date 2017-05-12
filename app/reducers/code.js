@@ -29,7 +29,6 @@ const newArea = (
   state = [],
   action
 ) => {
-  console.log(action, '-Reducering---', action.newSection);
   switch (action.type) {
     case types.TYPINGTEXT:
       return action.newSection;

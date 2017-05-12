@@ -22,19 +22,18 @@ class Code extends React.Component {
   }
 
   render() {
-    const {typingText, newArea } = this.props;
-    console.log(this.props)
-    const areas = [];
+    const {typingText, areas, newArea } = this.props;
+    const mapAreas = [];
     let count = 0;
-    this.props.docAreas.map((area) => {
+    areas.map((area) => {
       if (area === 'textArea') {
-        areas.push(
+        mapAreas.push(
           <TextArea
             key={count}
             onEntryChange={typingText} />,
         );
       } else if (area === 'codeMirror') {
-        areas.push(
+        mapAreas.push(
           <div key={count} className={cx('mirror-container')}>
             <CodeMirror
               options={this.cmOptions}
@@ -49,7 +48,7 @@ class Code extends React.Component {
     });
     return (
       <form className={cx('code-input')} onSubmit={this.props.submit}>
-        {areas}
+        {mapAreas}
         <CodeBttns
           newArea={newArea}
           submit={submitCode}
@@ -74,8 +73,7 @@ Code.defaultProps = {
 
 function mapStateToProps(state) {
   return {
-    topics: state.topic.topics,
-    newTopic: state.topic.newTopic
+    areas: state.newArea.areas
   };
 }
 

@@ -14,7 +14,6 @@ const cx = classNames.bind(styles);
 
 class Vote extends Component {
   render() {
-    console.log('this.props-------', this.props)
     const {newTopic, topics, typing, createTopic, destroyTopic, incrementCount, decrementCount } = this.props;
     return (
       <div className={cx('vote')}>

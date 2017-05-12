@@ -53,7 +53,6 @@ const newTopic = (
   state = '',
   action
 ) => {
-  console.log(action, '-Reducer---', action.type);
   switch (action.type) {
     case types.TYPING:
       return action.newTopic;
