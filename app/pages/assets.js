@@ -38,7 +38,7 @@ const metaAssets = () => {
 };
 
 const linkAssets = () => {
-  const links = [
+  return [
     // Add to homescreen for Chrome on Android
     { rel: 'icon', href: favicon },
     { rel: 'icon', sizes: '192x192', href: chromeFavicon },
@@ -50,6 +50,6 @@ const linkAssets = () => {
   ];
 };
 
-export const title = 'reactGo - just ship it';
+export const title = 'moon.codes';
 export const meta = metaAssets();
 export const link = linkAssets();

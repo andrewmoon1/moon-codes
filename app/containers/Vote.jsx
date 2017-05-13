@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
 import EntryBox from '../components/EntryBox';
-import TextArea from '../components/TextArea';
 import MainSection from '../components/MainSection';
 import Scoreboard from '../components/Scoreboard';
 import { createTopic, typing, incrementCount,
