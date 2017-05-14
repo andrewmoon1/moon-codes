@@ -60,7 +60,7 @@ class Code extends React.Component {
 
 Code.propTypes = {
   typingText: PropTypes.func.isRequired,
-  docAreas: PropTypes.arrayOf(PropTypes.string),
+  areas: PropTypes.arrayOf(PropTypes.string).isRequired,
   // documentation: PropTypes.objectOf(PropTypes.string).isRequired,
   // addCode: PropTypes.func.isRequired,
   // submit: PropTypes.func.isRequired,
@@ -68,12 +68,12 @@ Code.propTypes = {
 };
 
 Code.defaultProps = {
-  docAreas: ['textArea', 'codeMirror'],
+  areas: ['textArea', 'codeMirror'],
 };
 
 function mapStateToProps(state) {
   return {
-    areas: state.newArea.areas
+    areas: state.code.areas
   };
 }
 

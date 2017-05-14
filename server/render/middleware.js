@@ -20,7 +20,7 @@ export default function render(req, res) {
       message: '',
       isLogin: true
     },
-    newArea: {
+    code: {
       areas: [
         'textArea',
         'codeMirror',

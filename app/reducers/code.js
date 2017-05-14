@@ -26,7 +26,7 @@ const areas = (
 };
 
 const newArea = (
-  state = [],
+  state = '',
   action
 ) => {
   switch (action.type) {
