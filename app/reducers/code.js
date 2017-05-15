@@ -31,7 +31,10 @@ const savedAreas = (
 ) => {
   switch (action.type) {
     case types.SAVETEXT:
-      return [...state, {id: action.id, text: action.text}];
+      return [...state, {
+        id: action.newSection.id,
+        text: action.newSection.text
+      }];
     default:
       return state;
   }
@@ -51,10 +54,23 @@ const newArea = (
   }
 };
 
+const title = (
+  state = '',
+  action
+) => {
+  switch (action.type) {
+    case types.TYPINGTITLE:
+      return action.title;
+    default:
+      return state;
+  }
+};
+
 const codeReducer = combineReducers({
   newArea,
   areas,
-  savedAreas
+  savedAreas,
+  title
 });
 
 export default codeReducer;

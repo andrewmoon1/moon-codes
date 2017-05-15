@@ -11,6 +11,18 @@
   min-height: 400px;
 }
 
+.code-title {
+  height: 30px;
+  width: 127px;
+  padding: 5px;
+  border: 1px solid var(--blue-0);
+}
+
+.code-title:hover, .code-title:active, .code-title:focus {
+  border: 2px solid var(--blue-2);
+  outline: none;
+}
+
 .mirror-container {
   margin-top: 20px;
   border: 1px solid var(--blue-0);

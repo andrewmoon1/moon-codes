@@ -18,6 +18,7 @@ export const DESTROY_TOPIC = 'DESTROY_TOPIC';
 export const TYPING = 'TYPING';
 export const TYPINGTEXT = 'TYPINGTEXT';
 export const TYPINGCODE = 'TYPINGCODE';
+export const TYPINGTITLE = 'TYPINGTITLE';
 export const SAVETEXT = 'SAVETEXT';
 export const NEWAREA = 'NEWAREA';
 

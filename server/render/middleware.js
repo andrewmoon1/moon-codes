@@ -24,12 +24,6 @@ export default function render(req, res) {
       areas: [
         'textArea',
         'codeMirror',
-      ],
-      savedAreas: [
-        {
-          id: '0',
-          text: ''
-        }
       ]
     }
   }, history);

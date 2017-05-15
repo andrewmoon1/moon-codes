@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
 import TextArea from '../components/TextArea';
+import Title from '../components/Title';
 import CodeBttns from '../components/CodeBttns';
-import { typingText, typingCode,  newArea, submitCode, saveText, saveCode } from '../actions/codes';
+import { typingText, typingCode, typingTitle, newArea, submitCode, saveText, saveCode } from '../actions/codes';
 import styles from '../css/components/code';
 
 const cx = classNames.bind(styles);
@@ -36,7 +37,7 @@ class Code extends React.Component {
   }
 
   render() {
-    const { typingText, typingCode, areas, newArea, submitCode, saveText, saveCode } = this.props;
+    const { typingText, typingCode, typingTitle, areas, newArea, submitCode, saveText, saveCode } = this.props;
     const mapAreas = [];
     let count = 0;
     areas.map((area) => {
@@ -74,6 +75,8 @@ class Code extends React.Component {
         className={cx('code-input')}
         onSubmit={this.props.submit}
         >
+        <Title
+          onEntryChange={typingTitle} />
         {mapAreas}
         <CodeBttns
           newArea={newArea}
@@ -103,4 +106,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { typingText, typingCode, newArea, submitCode, saveText, saveCode })(Code);
+export default connect(mapStateToProps, { typingText, typingCode, typingTitle, newArea, submitCode, saveText, saveCode })(Code);

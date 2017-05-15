@@ -33,13 +33,19 @@ export function saveCode(text, target) {
 }
 
 export function typingCode(text, change, target) {
-  const args = [].slice.call(arguments)
   return {
     type: types.TYPINGCODE,
     newSection: {
       text,
       id: 'code'
     }
+  };
+}
+
+export function typingTitle(text) {
+  return {
+    type: types.TYPINGTITLE,
+    title: text,
   };
 }
 
