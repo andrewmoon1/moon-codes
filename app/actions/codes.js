@@ -5,11 +5,45 @@ import * as types from '../types';
 export function typingText(text) {
   return {
     type: types.TYPINGTEXT,
-    newSection: text
+    newSection: {
+      text,
+      id: 'text'
+    }
   };
 }
 
-export function newArea(text) {
+export function saveText(text, target) {
+  return {
+    type: types.SAVETEXT,
+    newSection: {
+      text,
+      id: target
+    }
+  };
+}
+
+export function saveCode(text, target) {
+  return {
+    type: types.SAVETEXT,
+    newSection: {
+      text,
+      id: 'code'
+    }
+  };
+}
+
+export function typingCode(text, change, target) {
+  const args = [].slice.call(arguments)
+  return {
+    type: types.TYPINGCODE,
+    newSection: {
+      text,
+      id: 'code'
+    }
+  };
+}
+
+export function newArea(text, target, target1) {
   return {
     type: types.NEWAREA,
     newSection: text

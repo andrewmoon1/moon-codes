@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
 import TextArea from '../components/TextArea';
 import CodeBttns from '../components/CodeBttns';
-import { typingText, newArea, submitCode } from '../actions/codes';
+import { typingText, typingCode,  newArea, submitCode, saveText, saveCode } from '../actions/codes';
 import styles from '../css/components/code';
 
 const cx = classNames.bind(styles);
@@ -19,26 +19,49 @@ class Code extends React.Component {
       lineNumbers: true,
       mode: 'javascript',
     };
+    this.mirrors = {};
+    this.saveCode = this.saveCode.bind(this);
+  }
+
+
+  saveCode(className, focused) {
+    const { saveText } = this.props;
+    if (!focused) {
+      const mirror = this.mirrors[className];
+      const value = mirror.getCodeMirror().getValue();
+      saveText(value, className);
+    }
+
+    return undefined;
   }
 
   render() {
-    const {typingText, areas, newArea } = this.props;
+    const { typingText, typingCode, areas, newArea, submitCode, saveText, saveCode } = this.props;
     const mapAreas = [];
     let count = 0;
     areas.map((area) => {
       if (area === 'textArea') {
+        const textCount = `text-${count}`;
         mapAreas.push(
           <TextArea
             key={count}
-            onEntryChange={typingText} />,
+            onEntryChange={typingText}
+            save={saveText}
+            count={textCount} />,
         );
       } else if (area === 'codeMirror') {
+        const mirrorCount = `mirror-${count}`;
         mapAreas.push(
-          <div key={count} className={cx('mirror-container')}>
+          <div
+            key={count}
+            className={cx('mirror-container')}>
             <CodeMirror
               options={this.cmOptions}
+              className={mirrorCount}
               defaultValue={'Enter Your Code'}
-              onChange={typingText}
+              onChange={typingCode}
+              ref={instance => this.mirrors[mirrorCount] = instance}
+              onFocusChange={this.saveCode.bind(this, mirrorCount)}
             />
           </div>
         );
@@ -47,7 +70,10 @@ class Code extends React.Component {
       return undefined;
     });
     return (
-      <form className={cx('code-input')} onSubmit={this.props.submit}>
+      <form
+        className={cx('code-input')}
+        onSubmit={this.props.submit}
+        >
         {mapAreas}
         <CodeBttns
           newArea={newArea}
@@ -77,4 +103,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { typingText, newArea })(Code);
+export default connect(mapStateToProps, { typingText, typingCode, newArea, submitCode, saveText, saveCode })(Code);
