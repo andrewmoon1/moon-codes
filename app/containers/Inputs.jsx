@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
 import TextArea from '../components/TextArea';
-import Markdown from './Markdown';
 import Title from '../components/Title';
 import CodeBttns from '../components/CodeBttns';
 import { typingTitle, newArea, submitCode, saveText } from '../actions/codes';
@@ -68,21 +67,18 @@ class Code extends React.Component {
       return undefined;
     });
     return (
-      <div>
-        <form
-          className={cx('code-input')}
-          onSubmit={this.props.submit}
-          >
-          <Title
-            onEntryChange={typingTitle} />
-          {mapAreas}
-          <CodeBttns
-            newArea={newArea}
-            submit={submitCode}
-            />
-        </form>
-        <Markdown />
-      </div>
+      <form
+        className={cx('code-input')}
+        onSubmit={this.props.submit}
+        >
+        <Title
+          onEntryChange={typingTitle} />
+        {mapAreas}
+        <CodeBttns
+          newArea={newArea}
+          submit={submitCode}
+          />
+      </form>
     );
   }
 }
