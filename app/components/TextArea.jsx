@@ -8,7 +8,6 @@ const cx = classNames.bind(styles);
 export default class TextArea extends Component {
   constructor(props) {
     super(props);
-    this.onChange = this.onChange.bind(this);
     this.saveCode = this.saveCode.bind(this);
   }
 
@@ -31,5 +30,6 @@ export default class TextArea extends Component {
 }
 
 TextArea.propTypes = {
-  onEntryChange: PropTypes.func.isRequired
+  save: PropTypes.func.isRequired,
+  count: PropTypes.string.isRequired
 };

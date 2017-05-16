@@ -5,11 +5,10 @@ import classNames from 'classnames/bind';
 import TextArea from '../components/TextArea';
 import Title from '../components/Title';
 import CodeBttns from '../components/CodeBttns';
-import { typingText, typingCode, typingTitle, newArea, submitCode, saveText, saveCode } from '../actions/codes';
+import { typingTitle, newArea, submitCode, saveText } from '../actions/codes';
 import styles from '../css/components/code';
 
 const cx = classNames.bind(styles);
-
 const CodeMirror = require('react-codemirror');
 
 
@@ -36,7 +35,7 @@ class Code extends React.Component {
   }
 
   render() {
-    const { typingText, typingCode, typingTitle, areas, newArea, submitCode, saveText, saveCode } = this.props;
+    const { typingTitle, areas, newArea, submitCode, saveText } = this.props;
     const mapAreas = [];
     let count = 0;
     areas.map((area) => {
@@ -45,7 +44,6 @@ class Code extends React.Component {
         mapAreas.push(
           <TextArea
             key={count}
-            onEntryChange={typingText}
             save={saveText}
             count={textCount} />,
         );
@@ -86,8 +84,11 @@ class Code extends React.Component {
 }
 
 Code.propTypes = {
-  typingText: PropTypes.func.isRequired,
   areas: PropTypes.arrayOf(PropTypes.string).isRequired,
+  typingTitle: PropTypes.func.isRequired,
+  newArea: PropTypes.func.isRequired,
+  submitCode: PropTypes.func.isRequired,
+  saveText: PropTypes.func.isRequired,
   // documentation: PropTypes.objectOf(PropTypes.string).isRequired,
   // addCode: PropTypes.func.isRequired,
   // submit: PropTypes.func.isRequired,
@@ -104,4 +105,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { typingText, typingCode, typingTitle, newArea, submitCode, saveText, saveCode })(Code);
+export default connect(mapStateToProps, { typingTitle, newArea, submitCode, saveText })(Code);
