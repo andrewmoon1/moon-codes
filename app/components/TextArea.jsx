@@ -12,12 +12,6 @@ export default class TextArea extends Component {
     this.saveCode = this.saveCode.bind(this);
   }
 
-
-  onChange(event) {
-    const { onEntryChange } = this.props;
-    onEntryChange(event.target.value, event.target);
-  }
-
   saveCode(event) {
     const { save, count } = this.props;
     save(event.target.value, count);
@@ -29,8 +23,8 @@ export default class TextArea extends Component {
         <textarea
           className={cx('textarea')}
           placeholder="Enter Description Here"
-          onChange={this.onEntryChange}
-          onBlur={this.saveCode} />
+          onChange={this.saveCode}
+        />
       </div>
     );
   }

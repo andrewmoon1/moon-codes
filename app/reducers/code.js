@@ -26,19 +26,32 @@ const areas = (
 };
 
 const savedAreas = (
-  state = [],
+  state = {},
   action
 ) => {
   switch (action.type) {
     case types.SAVETEXT:
-      return [...state, {
-        id: action.newSection.id,
-        text: action.newSection.text
-      }];
+      // const res = {};
+      state[action.newSection.id] = action.newSection.text;
+      return {...state};
     default:
       return state;
   }
 };
+// const savedAreas = (
+//   state = [],
+//   action
+// ) => {
+//   switch (action.type) {
+//     case types.SAVETEXT:
+//       return [...state, {
+//         id: action.newSection.id,
+//         text: action.newSection.text
+//       }];
+//     default:
+//       return state;
+//   }
+// };
 
 const newArea = (
   state = '',

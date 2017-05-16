@@ -27,11 +27,10 @@ class Code extends React.Component {
 
   saveCode(className, focused) {
     const { saveText } = this.props;
-    if (!focused) {
-      const mirror = this.mirrors[className];
-      const value = mirror.getCodeMirror().getValue();
-      saveText(value, className);
-    }
+    const mirror = this.mirrors[className];
+    const value = mirror.getCodeMirror().getValue();
+
+    saveText(value, className);
 
     return undefined;
   }
@@ -60,9 +59,8 @@ class Code extends React.Component {
               options={this.cmOptions}
               className={mirrorCount}
               defaultValue={'Enter Your Code'}
-              onChange={typingCode}
+              onChange={this.saveCode.bind(this, mirrorCount)}
               ref={instance => this.mirrors[mirrorCount] = instance}
-              onFocusChange={this.saveCode.bind(this, mirrorCount)}
             />
           </div>
         );
