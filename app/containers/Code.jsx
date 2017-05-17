@@ -90,21 +90,23 @@ class Code extends React.Component {
     const mapAreas = this.buildAreas();
 
     return (
-      <div className={cx('codes-container')}>
-        <form
-          className={cx('code-input')}
-          onSubmit={this.props.submit}
-          >
-          <Title
-            onEntryChange={typingTitle} />
-          {mapAreas}
-          <CodeBttns
-            newArea={newArea}
-            submit={submitCode}
-            />
-        </form>
-        <Markdown />
-      </div>
+      <form
+        className={cx('code-form')}
+        onSubmit={this.props.submit} >
+        <div className={cx('codes-container')}>
+          <div
+            className={cx('code-input')} >
+            <Title
+              onEntryChange={typingTitle} />
+            {mapAreas}
+          </div>
+          <Markdown />
+        </div>
+        <CodeBttns
+          newArea={newArea}
+          submit={submitCode}
+          />
+      </form>
     );
   }
 }
