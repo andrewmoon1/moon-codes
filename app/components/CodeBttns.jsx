@@ -15,6 +15,8 @@ class CodeBttns extends React.Component {
 
   submit(event) {
     event.preventDefault();
+    const { submit } = this.props;
+    submit(event.target)
   }
 
   newEl(event) {
