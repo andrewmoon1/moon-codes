@@ -24,7 +24,12 @@ export default function render(req, res) {
       areas: [
         'textArea',
         'codeMirror',
-      ]
+      ],
+      savedAreas: {
+        'text-0': 'Enter Description Here',
+        'mirror-1': 'Enter Your Code'
+      },
+      title: 'Enter Title Here'
     }
   }, history);
 

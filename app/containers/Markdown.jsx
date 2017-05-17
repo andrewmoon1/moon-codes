@@ -22,37 +22,51 @@ class MarkdownContainer extends React.Component {
   // componentWillReceiveProps(nextProps) {
   // }
 
-  render() {
-    const { areas } = this.props;
+  buildMarkdown() {
+    const { areas, title } = this.props;
     const markdowns = [];
     let count = 0;
 
     Object.keys(areas).map((md) => {
       let template = '';
+      let type = '';
       const position = parseInt(md.split('-', md.indexOf('-') + 1)[1], 10);
       if (md.includes('mirror')) {
+        type = 'mirror';
         template = template.concat(
           '```js \n' +
           areas[md] +
           '\n' +
-          '``` \n' +
-          '----- \n'
+          '``` \n'
         );
       } else if (md.includes('text')) {
-        template = template.concat('\n' + areas[md] + '\n \n ---');
+        type = 'text';
+        template = template.concat('\n' + areas[md] + '\n \n');
       }
 
       markdowns[position] =
         (<ReactMarkdown
+          className={cx('markdown', `markdown-${position}`, `markdown-${type}`)}
           key={count}
           source={template} />);
 
       count += 1;
     });
+
+    return markdowns;
+  }
+
+  render() {
+    const { title } = this.props;
+    const markdowns = this.buildMarkdown();
+
     return (
       <div
         className={cx('markdown-container')}
         >
+        <h1 className={cx('markdown-title')}>
+          {title || 'Enter title here'}
+        </h1>
         {markdowns}
       </div>
     );
@@ -68,11 +82,13 @@ MarkdownContainer.defaultProps = {
     'text-0': '### Enter Text Here',
     'code-0': '### Enter Code Here'
   },
+  title: 'Enter title here'
 };
 
 function mapStateToProps(state) {
   return {
-    areas: state.code.savedAreas
+    areas: state.code.savedAreas,
+    title: state.code.title
   };
 }
 

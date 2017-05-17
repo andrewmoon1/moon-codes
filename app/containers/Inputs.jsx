@@ -5,14 +5,14 @@ import classNames from 'classnames/bind';
 import TextArea from '../components/TextArea';
 import Title from '../components/Title';
 import CodeBttns from '../components/CodeBttns';
-import { typingTitle, newArea, submitCode, saveText } from '../actions/codes';
+// import { typingTitle, newArea, submitCode, saveText } from '../actions/codes';
 import styles from '../css/components/code';
 
 const cx = classNames.bind(styles);
 const CodeMirror = require('react-codemirror');
 
 
-class Code extends React.Component {
+class Inputs extends React.Component {
   constructor(props) {
     super(props);
     this.cmOptions = {
@@ -83,19 +83,17 @@ class Code extends React.Component {
   }
 }
 
-Code.propTypes = {
+Inputs.propTypes = {
   areas: PropTypes.arrayOf(PropTypes.string).isRequired,
   typingTitle: PropTypes.func.isRequired,
   newArea: PropTypes.func.isRequired,
   submitCode: PropTypes.func.isRequired,
   saveText: PropTypes.func.isRequired,
   // documentation: PropTypes.objectOf(PropTypes.string).isRequired,
-  // addCode: PropTypes.func.isRequired,
   // submit: PropTypes.func.isRequired,
-  // addText: PropTypes.func.isRequired,
 };
 
-Code.defaultProps = {
+Inputs.defaultProps = {
   areas: ['textArea', 'codeMirror'],
 };
 
@@ -105,4 +103,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { typingTitle, newArea, submitCode, saveText })(Code);
+export default connect(mapStateToProps, { typingTitle, newArea, submitCode, saveText })(Inputs);

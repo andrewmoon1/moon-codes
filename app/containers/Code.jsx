@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
-import TextArea from '../components/TextArea';
 import Markdown from './Markdown';
+import TextArea from '../components/TextArea';
 import Title from '../components/Title';
 import CodeBttns from '../components/CodeBttns';
 import { typingTitle, newArea, submitCode, saveText } from '../actions/codes';
@@ -35,9 +35,9 @@ class Code extends React.Component {
     return undefined;
   }
 
-  render() {
-    const { typingTitle, areas, newArea, submitCode, saveText } = this.props;
+  buildAreas() {
     const mapAreas = [];
+    const { areas, saveText } = this.props;
     let count = 0;
     areas.map((area) => {
       if (area === 'textArea') {
@@ -48,6 +48,13 @@ class Code extends React.Component {
             save={saveText}
             count={textCount} />,
         );
+
+        if (count > 1) {
+          // renders markdown with each new area
+          setTimeout(() => {
+            saveText('Enter Description Here', textCount);
+          }, 0);
+        }
       } else if (area === 'codeMirror') {
         const mirrorCount = `mirror-${count}`;
         mapAreas.push(
@@ -63,12 +70,27 @@ class Code extends React.Component {
             />
           </div>
         );
+
+        if (count > 1) {
+          // renders markdown with each new area
+          setTimeout(() => {
+            this.saveCode(mirrorCount, 'Enter Your Code');
+          }, 0);
+        }
       }
       count += 1;
       return undefined;
     });
+
+    return mapAreas;
+  }
+
+  render() {
+    const { typingTitle, newArea, submitCode } = this.props;
+    const mapAreas = this.buildAreas();
+
     return (
-      <div>
+      <div className={cx('codes-container')}>
         <form
           className={cx('code-input')}
           onSubmit={this.props.submit}
@@ -93,10 +115,7 @@ Code.propTypes = {
   newArea: PropTypes.func.isRequired,
   submitCode: PropTypes.func.isRequired,
   saveText: PropTypes.func.isRequired,
-  // documentation: PropTypes.objectOf(PropTypes.string).isRequired,
-  // addCode: PropTypes.func.isRequired,
   // submit: PropTypes.func.isRequired,
-  // addText: PropTypes.func.isRequired,
 };
 
 Code.defaultProps = {
