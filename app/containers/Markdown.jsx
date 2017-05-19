@@ -7,7 +7,7 @@ import TextArea from '../components/TextArea';
 import Title from '../components/Title';
 import CodeBttns from '../components/CodeBttns';
 import { typingTitle, newArea, submitCode, saveText } from '../actions/codes';
-import styles from '../css/components/code';
+import styles from '../css/components/markdown';
 
 const cx = classNames.bind(styles);
 const CodeMirror = require('react-codemirror');

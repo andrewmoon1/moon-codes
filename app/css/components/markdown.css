@@ -1,0 +1,26 @@
+@import '../common/colors';
+
+.markdown-container {
+  width: 47%;
+}
+
+.markdown {
+  height: 240px;
+  margin-top: 20px;
+  padding: 5px;
+  overflow: scroll;
+  border: 1px solid var(--green-0);
+}
+
+.markdown:hover, .markdown:active, .markdown:focus {
+  border: 2px solid var(--green-2);
+}
+
+.markdown-title {
+  margin-top: 3px;
+  margin-bottom: 0;
+}
+
+.markdown-mirror {
+  height: 300px;
+}
