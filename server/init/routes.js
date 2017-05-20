@@ -12,9 +12,9 @@ const codesController = controllers && controllers.codes;
 export default (app) => {
   // user routes
   if (usersController) {
-    app.post('/login', usersController.login);
-    app.post('/signup', usersController.signUp);
-    app.post('/logout', usersController.logout);
+    app.post('/sessions', usersController.login);
+    app.post('/users', usersController.signUp);
+    app.delete('/sessions', usersController.logout);
   } else {
     console.warn(unsupportedMessage('users routes'));
   }
