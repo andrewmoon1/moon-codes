@@ -6,7 +6,7 @@ import Markdown from './Markdown';
 import TextArea from '../components/TextArea';
 import Title from '../components/Title';
 import CodeBttns from '../components/CodeBttns';
-import { typingTitle, newArea, submitCode, saveText } from '../actions/codes';
+import { typingTitle, newArea, submitCode, saveText, load } from '../actions/codes';
 import styles from '../css/components/code';
 
 const cx = classNames.bind(styles);
@@ -24,6 +24,15 @@ class Code extends React.Component {
     this.saveCode = this.saveCode.bind(this);
   }
 
+  componentDidMount() {
+    const { load } = this.props;
+    const data = {
+      'text-0': 'Enter Description Here',
+      'mirror-1': 'Enter Your Code'
+    }
+
+    load(data, 'Enter Title Here');
+  }
 
   saveCode(className, focused) {
     const { saveText } = this.props;
@@ -86,7 +95,7 @@ class Code extends React.Component {
   }
 
   render() {
-    const { typingTitle, newArea, submitCode } = this.props;
+    const { typingTitle, newArea, submitCode, router } = this.props;
     const mapAreas = this.buildAreas();
 
     return (
@@ -107,6 +116,7 @@ class Code extends React.Component {
         <CodeBttns
           newArea={newArea}
           submit={submitCode}
+          router={router}
           />
       </form>
     );
@@ -132,4 +142,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { typingTitle, newArea, submitCode, saveText })(Code);
+export default connect(mapStateToProps, { typingTitle, newArea, submitCode, saveText, load })(Code);

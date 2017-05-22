@@ -70,7 +70,7 @@ const title = (
 };
 
 const documentation = (
-  state = '',
+  state = [],
   action
 ) => {
   switch (action.type) {

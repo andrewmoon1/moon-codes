@@ -47,7 +47,6 @@ class MDSelect extends React.Component {
 
     docs.some((doc) => {
       const title = JSON.parse(doc.title);
-      console.log('this is getting called', title, submission);
       if (title === submission) {
         const documentation = JSON.parse(doc.code);
         load(documentation, title);
@@ -68,7 +67,10 @@ class MDSelect extends React.Component {
 }
 
 MDSelect.propTypes = {
-  // newArea: PropTypes.func.isRequired,
+  getDocs: PropTypes.func.isRequired,
+  load: PropTypes.func.isRequired,
+  docs: PropTypes.arrayOf(PropTypes.object).isRequired,
+
 };
 
 function mapStateToProps(state) {
