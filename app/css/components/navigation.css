@@ -3,6 +3,7 @@
 
 .navigation {
   padding: 0 28px;
+  display: flex;
 }
 
 .item {
@@ -10,6 +11,7 @@
   text-decoration: none;
   padding: 16px 32px;
   color: var(--colorBlack);
+  flex-shrink: 2;
 }
 
 .logo {

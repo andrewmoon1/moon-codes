@@ -6,6 +6,10 @@
   display: flex;
 }
 
+.code-markdown {
+  width: 47%;
+}
+
 .code-input {
   display: flex;
   align-self: center;

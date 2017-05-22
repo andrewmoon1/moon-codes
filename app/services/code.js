@@ -6,7 +6,7 @@ export default () => {
   return {
     getCodes: () => client.request({
       method: 'GET',
-      url: '/code'
+      url: '/code/all'
     }),
     deleteCode: ({ id }) => client.request({
       method: 'DELETE',

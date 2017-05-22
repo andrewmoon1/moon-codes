@@ -17,10 +17,35 @@ function createCodeFailure(data) {
   };
 }
 
+function createDocSuccess(data) {
+  return {
+    type: types.CREATE_DOC_SUCCESS,
+    data
+  };
+}
+
+function createDocFailure(data) {
+  return {
+    type: types.CREATE_DOC_FAILURE,
+    id: data.id,
+    error: data.error
+  };
+}
+
+function createDocRequest(data) {
+  return {
+    type: types.CREATE_DOC_REQUEST,
+    id: data.id,
+    title: data.title,
+    code: data.code
+  };
+}
+
 function createCodeRequest(data) {
   return {
     type: types.CREATE_CODE_REQUEST,
     id: data.id,
+    title: data.title,
     code: data.code
   };
 }
@@ -56,6 +81,7 @@ export function submitCode() {
 
     const data = {
       id,
+      title: JSON.stringify(code.title),
       code: JSON.stringify(code.savedAreas),
     };
 
@@ -75,5 +101,40 @@ export function submitCode() {
           })
         );
       });
+  };
+}
+
+export function getDocs() {
+  return (dispatch, getState) => {
+    const { code } = getState();
+    const id = md5.hash(code.title);
+
+    const data = {
+      id,
+      code: JSON.stringify(code.savedAreas),
+    };
+    // First dispatch an optimistic update
+    dispatch(createDocRequest(data));
+    return codeService().getCodes()
+      .then((res) => {
+        if (res.status === 200) {
+          return dispatch(createDocSuccess(res.data));
+        }
+      })
+      .catch(() => {
+        return dispatch(
+          createDocFailure({
+            error: 'Something went wrong with the code submission'
+          })
+        );
+      });
+  };
+}
+
+export function load(data, title) {
+  return {
+    type: types.LOAD_DOCUMENTATION,
+    data,
+    title,
   };
 }

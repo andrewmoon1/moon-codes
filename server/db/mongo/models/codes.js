@@ -6,6 +6,7 @@ import mongoose from 'mongoose';
 
 const CodeSchema = new mongoose.Schema({
   id: String,
+  title: String,
   code: String,
   date: { type: Date, default: Date.now }
 });

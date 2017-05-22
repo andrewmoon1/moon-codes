@@ -21,7 +21,7 @@ const buildPage = ({ componentHTML, initialState, headAssets }) => {
     ${headAssets.link.toString()}
     ${staticAssets.createStylesheets()}
     ${staticAssets.createTrackingScript()}
-    <link href="api/mirror" rel="stylesheet">
+    <link href="../api/mirror" rel="stylesheet">
   </head>
   <body>
     <div id="app">${componentHTML}</div>

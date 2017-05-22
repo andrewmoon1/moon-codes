@@ -100,7 +100,9 @@ class Code extends React.Component {
               onEntryChange={typingTitle} />
             {mapAreas}
           </div>
-          <Markdown />
+          <div className={cx('code-markdown')}>
+            <Markdown />
+          </div>
         </div>
         <CodeBttns
           newArea={newArea}
