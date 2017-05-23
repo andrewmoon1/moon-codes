@@ -12,27 +12,32 @@ const cx = classNames.bind(styles);
 class MDSelect extends React.Component {
   constructor(props) {
     super(props);
+    this.index = 0;
     this.submit = this.submit.bind(this);
   }
 
   componentDidMount() {
-    const { getDocs } = this.props;
+    const { getDocs, areas } = this.props;
     getDocs();
+    this.submission = areas;
   }
 
   componentDidUpdate() {
-    const { docs } = this.props;
+    const { docs, areas, title } = this.props;
     const select = document.getElementById('mdSelect');
-    docs.forEach((doc, index) => {
-      const title = JSON.parse(doc.title);
+console.log(title, (!this.submission || title === 'Enter Title Here'))
+    for (let i = this.index; i < docs.length; i += 1) {
+      const parsedTitle = JSON.parse(docs[i].title);
       const option = document.createElement('option');
-      option.text = title;
+      option.text = parsedTitle;
       select.add(option);
 
-      if (index === 0) {
-        this.submit(null, title);
+      if (i === 0 && (!this.submission || title === 'Enter Title Here')) {
+        this.submit(null, parsedTitle);
       }
-    });
+
+      this.index += 1;
+    }
   }
 
   submit(event, title) {
@@ -75,8 +80,10 @@ MDSelect.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    docs: state.code.documentation
+    docs: state.code.documentation,
+    areas: state.code.savedAreas,
+    title: state.code.title,
   };
 }
 
-export default connect(mapStateToProps, {getDocs, load})(MDSelect);
+export default connect(mapStateToProps, { getDocs, load })(MDSelect);
