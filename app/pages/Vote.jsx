@@ -12,7 +12,7 @@ class Vote extends Component {
   }
 
   pageTitle = () => {
-    return 'Vote | reactGo';
+    return 'Vote | moon.codes';
   };
 
   pageMeta = () => {
@@ -35,4 +35,3 @@ class Vote extends Component {
 }
 
 export default Vote;
-

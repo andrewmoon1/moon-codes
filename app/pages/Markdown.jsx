@@ -18,7 +18,7 @@ class Markdown extends Component {
   }
 
   pageTitle = () => {
-    return 'Markdown | moon.codes';
+    return 'Documentation | moon.codes';
   };
 
   pageMeta = () => {

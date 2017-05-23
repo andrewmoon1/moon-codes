@@ -12,7 +12,7 @@ class LoginOrRegister extends Component {
   }
 
   pageTitle = () => {
-    return 'LoginOrRegister | reactGo';
+    return 'LoginOrRegister | moon.codes';
   };
 
   pageMeta = () => {

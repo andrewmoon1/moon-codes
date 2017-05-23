@@ -12,7 +12,7 @@ class About extends Component {
   }
 
   pageTitle = () => {
-    return 'About | reactGo';
+    return 'About | moon.codes';
   };
 
   pageMeta = () => {

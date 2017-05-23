@@ -12,7 +12,7 @@ class Dashboard extends Component {
   }
 
   pageTitle = () => {
-    return 'Dashboard | reactGo';
+    return 'Dashboard | moon.codes';
   };
 
   pageMeta = () => {
@@ -35,4 +35,3 @@ class Dashboard extends Component {
 }
 
 export default Dashboard;
-
