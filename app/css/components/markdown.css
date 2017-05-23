@@ -8,6 +8,17 @@
   width: 100%;
 }
 
+.page-markdown > .markdown-container > .markdown {
+  border: none;
+  min-height: 140px;
+  height: auto;
+  overflow: visible;
+}
+
+.page-markdown > .markdown-container {
+  overflow: auto;
+}
+
 .markdown {
   height: 240px;
   margin-top: 20px;
@@ -17,7 +28,7 @@
 }
 
 .markdown:hover, .markdown:active, .markdown:focus {
-  border: 2px solid var(--green-2);
+  /*border: 2px solid var(--green-2);*/
 }
 
 .markdown-title {
@@ -27,6 +38,11 @@
 
 .markdown-mirror {
   height: 300px;
+}
+
+.page-markdown > .markdown-container > .markdown-mirror {
+  background-color: #f6f8fa;
+  padding: 11px;
 }
 
 .md-select {
