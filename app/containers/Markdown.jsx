@@ -48,7 +48,8 @@ class MarkdownContainer extends React.Component {
         (<ReactMarkdown
           className={cx('markdown', `markdown-${position}`, `markdown-${type}`)}
           key={count}
-          source={template} />);
+          source={template}
+          escapeHtml />);
 
       count += 1;
     });
