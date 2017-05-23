@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import FileSaver from 'file-saver';
 import classNames from 'classnames/bind';
 import styles from '../css/components/markdown';
 import { getDocs, load } from '../actions/codes';
@@ -14,6 +15,7 @@ class MDSelect extends React.Component {
     super(props);
     this.index = 0;
     this.submit = this.submit.bind(this);
+    this.download = this.download.bind(this);
   }
 
   componentDidMount() {
@@ -25,7 +27,7 @@ class MDSelect extends React.Component {
   componentDidUpdate() {
     const { docs, areas, title } = this.props;
     const select = document.getElementById('mdSelect');
-console.log(title, (!this.submission || title === 'Enter Title Here'))
+
     for (let i = this.index; i < docs.length; i += 1) {
       const parsedTitle = JSON.parse(docs[i].title);
       const option = document.createElement('option');
@@ -59,6 +61,30 @@ console.log(title, (!this.submission || title === 'Enter Title Here'))
     });
   }
 
+  download() {
+    const { areas, title } = this.props;
+    const result = [`# ${title}  \n`];
+
+    Object.keys(areas).forEach((area) => {
+      let section = '';
+
+      if (area.includes('mirror')) {
+        section = '```js \n' +
+          areas[area] +
+          '\n' +
+          '``` \n';
+      } else {
+        section = areas[area];
+      }
+
+      result.push(section);
+    });
+
+    const blob = new Blob(result, {type: 'text/plain;charset=utf-8'});
+
+    FileSaver.saveAs(blob, `${title}.txt`);
+  }
+
   render() {
     return (
       <div className={cx('md-select-container')}>
@@ -66,6 +92,11 @@ console.log(title, (!this.submission || title === 'Enter Title Here'))
           id={'mdSelect'}
           onChange={this.submit}
           className={cx('md-select')} />
+        <button
+          className={cx('md-save')}
+          onClick={this.download} >
+          Download
+        </button>
       </div>
     );
   }
