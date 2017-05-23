@@ -23,12 +23,11 @@ const Navigation = ({ user, logOut }) => {
             <Link className={cx('item')} to="/login">Log in</Link>
           )}
         <Link className={cx('item')} to="/dashboard">Dashboard</Link>
-        <Link className={cx('item')} to="/code">Code</Link>
         <Link className={cx('item')} to="/markdown">Documentation</Link>
+        <Link className={cx('item')} to="/about">About</Link>
       </nav>
     );
 };
-// <Link to="/about" className={cx('item')} activeClassName={cx('active')}>About</Link>
 
 Navigation.propTypes = {
   user: PropTypes.object,

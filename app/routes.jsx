@@ -29,13 +29,13 @@ export default (store) => {
     }
     callback();
   };
+
   return (
     <Route path="/" component={App}>
-      <IndexRoute component={Vote} fetchData={fetchVoteData} />
+      <IndexRoute component={Code} />
       <Route path="login" component={LoginOrRegister} onEnter={redirectAuth} />
       <Route path="dashboard" component={Dashboard} onEnter={requireAuth} />
       <Route path="about" component={About} />
-      <Route path="code" component={Code} />
       <Route path="markdown" component={Markdown} />
     </Route>
   );
