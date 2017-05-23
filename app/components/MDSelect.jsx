@@ -63,7 +63,7 @@ class MDSelect extends React.Component {
 
   download() {
     const { areas, title } = this.props;
-    const result = [`# ${title}  \n`];
+    const result = [`# ${title}  \n \n`];
 
     Object.keys(areas).forEach((area) => {
       let section = '';
@@ -72,9 +72,9 @@ class MDSelect extends React.Component {
         section = '```js \n' +
           areas[area] +
           '\n' +
-          '``` \n';
+          '``` \n \n';
       } else {
-        section = areas[area];
+        section = `${areas[area]} \n`;
       }
 
       result.push(section);
@@ -82,7 +82,7 @@ class MDSelect extends React.Component {
 
     const blob = new Blob(result, {type: 'text/plain;charset=utf-8'});
 
-    FileSaver.saveAs(blob, `${title}.txt`);
+    FileSaver.saveAs(blob, `${title}.md`);
   }
 
   render() {
